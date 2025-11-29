@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Đoán Số</title>
+    <!-- Tailwind CSS CDN cho giao diện nhanh đẹp -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Confetti animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: 0;
+            z-index: 1000;
+            animation: fall 2s linear forwards;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg);}
+            100% { transform: translateY(100vh) rotate(360deg);}
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 flex flex-col justify-center items-center min-h-screen p-6">
+
+    <!-- Game Card -->
+    <div class="bg-gray-800 shadow-2xl rounded-xl p-8 max-w-md w-full text-center border border-gray-700">
+        <h1 class="text-3xl font-extrabold text-green-400 mb-4">🎯 Game Đoán Số 50–150 🎯</h1>
+        <p class="text-gray-300 mb-6">Nhập số bạn đoán và nhấn "Đoán"</p>
+
+        <div class="flex justify-center mb-4">
+            <input type="number" id="guess-input" min="50" max="150"
+                class="w-24 px-3 py-2 rounded-lg text-gray-900 font-semibold focus:outline-none" placeholder="50–150">
+            <button id="guess-btn" class="ml-3 bg-green-500 hover:bg-green-600 text-white font-bold px-4 py-2 rounded-lg shadow-lg transition duration-300">Đoán</button>
+        </div>
+
+        <div id="message" class="text-lg text-yellow-400 font-semibold min-h-[24px] mb-2"></div>
+        <div id="attempts" class="text-gray-400 mb-2"></div>
+
+        <button id="restart-btn" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-lg shadow-lg transition duration-300 hidden">Chơi lại</button>
+    </div>
+
+    <script>
+        // ===============================
+        // 1. Sinh số ngẫu nhiên 50–150
+        // ===============================
+        const min = 50;
+        const max = 150;
+        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        let attempts = 0;
+
+        const guessInput = document.getElementById('guess-input');
+        const guessBtn = document.getElementById('guess-btn');
+        const message = document.getElementById('message');
+        const attemptsDiv = document.getElementById('attempts');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // ===============================
+        // 2. Confetti animation
+        // ===============================
+        function showConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.width = confetti.style.height = `${5 + Math.random() * 10}px`;
+                confetti.style.animationDuration = `${1 + Math.random() * 2}s`;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2500);
+            }
+        }
+
+        // ===============================
+        // 3. Xử lý đoán
+        // ===============================
+        function checkGuess() {
+            const userGuess = Number(guessInput.value);
+            attempts++;
+
+            if (isNaN(userGuess) || userGuess < min || userGuess > max) {
+                message.textContent = `Vui lòng nhập số từ ${min} đến ${max}`;
+                attemptsDiv.textContent = `Số lần thử: ${attempts}`;
+                return;
+            }
+
+            if (userGuess < randomNumber) {
+                message.textContent = "Quá thấp! Thử cao hơn.";
+            } else if (userGuess > randomNumber) {
+                message.textContent = "Quá cao! Thử thấp hơn.";
+            } else {
+                message.textContent = `🎉 Chúc mừng! Bạn đoán đúng sau ${attempts} lần!`;
+                showConfetti();
+                guessBtn.disabled = true;
+                restartBtn.classList.remove('hidden');
+            }
+
+            attemptsDiv.textContent = `Số lần thử: ${attempts}`;
+            guessInput.value = "";
+            guessInput.focus();
+        }
+
+        guessBtn.addEventListener('click', checkGuess);
+
+        // Enter key cũng có thể đoán
+        guessInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkGuess();
+        });
+
+        // ===============================
+        // 4. Nút chơi lại
+        // ===============================
+        restartBtn.addEventListener('click', () => {
+            randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            attempts = 0;
+            message.textContent = "";
+            attemptsDiv.textContent = "";
+            guessBtn.disabled = false;
+            restartBtn.classList.add('hidden');
+            guessInput.value = "";
+            guessInput.focus();
+        });
+
+        guessInput.focus();
+    </script>
+
+</body>
+</html>

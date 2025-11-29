@@ -1,0 +1,87 @@
+/* style.css */
+
+/* Custom color cho accent */
+:root {
+    --accent-color: #10b981; /* xanh lá Tailwind green-500 */
+}
+
+/* Nút CTA */
+.cta-button {
+    background-color: var(--accent-color);
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #059669; /* xanh đậm hơn */
+    transform: scale(1.05);
+}
+
+/* Highlight thumbnail đang active */
+.thumbnail.active-thumb {
+    border-color: var(--accent-color);
+    opacity: 1 !important;
+}
+
+/* Hiệu ứng hover thumbnail */
+.thumbnail:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section Background */
+.hero-bg {
+    background: linear-gradient(135deg, #111827, #1f2937);
+}
+
+/* Shadow nâng cao cho ảnh lớn trong gallery */
+#main-gallery-image {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Style cho feature card */
+.feature-card {
+    background-color: #1f2937;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer links */
+footer a {
+    transition: color 0.3s ease;
+}
+footer a:hover {
+    color: var(--accent-color);
+}
+
+/* Mobile menu open effect */
+#mobile-menu.menu-open {
+    animation: slideDown 0.3s forwards;
+}
+
+@keyframes slideDown {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+/* Scroll smooth cho body (nếu chưa có) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Font custom */
+body {
+    font-family: 'Inter', sans-serif;
+}

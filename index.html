@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Phạm Huỳnh Minh Trọng</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind config cho font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'accent-color': '#10B981', // Màu xanh lá ví dụ
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'], // Font mặc định
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <div class="logo text-xl font-bold text-gray-900">
+                <span class="text-accent-color">Minh </span><span class="text-accent-color">Trọng</span>
+            </div>
+            
+            <!-- Menu Desktop -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 font-medium">
+                    <li><a href="#home" class="nav-link">Trang chủ</a></li>
+                    <li><a href="#bai1" class="nav-link">Bài tập 01</a></li>
+                    <li><a href="#bai2" class="nav-link">Bài tập 02</a></li>
+                    <li><a href="#gallery" class="nav-link">Thư viện ảnh</a></li>
+                    <li><a href="#contact" class="nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Nút Hamburger Mobile -->
+            <button class="md:hidden text-gray-600 hover:text-accent-color p-2 rounded-lg transition" id="menu-button" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white/95 border-t border-gray-200 shadow-md">
+            <ul class="flex flex-col space-y-1 p-4 font-medium">
+                <li><a href="#home" class="mobile-link">Trang chủ</a></li>
+                <li><a href="#bai1" class="mobile-link">Bài tập 01</a></li>
+                <li><a href="#bai2" class="mobile-link">Bài tập 02</a></li>
+                <li><a href="#gallery" class="mobile-link">Thư viện ảnh</a></li>
+                <li><a href="#contact" class="mobile-link">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        
+        <!-- Profile Section -->
+        <section class="bg-white p-8 md:p-10 rounded-xl shadow-2xl mb-12 border-t-4 border-accent-color" id="home">
+            <div class="profile flex flex-col md:flex-row gap-8 items-center">
+                <!-- Avatar -->
+                <div class="profile-avatar w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-inner flex-shrink-0">
+                    <img src="images/avatar.jpg" alt="Avatar Phạm Huỳnh Minh Trọng" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Profile Info -->
+                <div class="profile-info text-center md:text-left">
+                    <h2 class="text-4xl font-extrabold text-gray-900 mb-2">Phạm Huỳnh Minh Trọng</h2>
+                    <p class="text-lg text-gray-600 font-semibold mb-4">Nhà phát triển Web / Sinh viên Công nghệ</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
+                        <p><strong>Ngày sinh:</strong> 16/09/2005</p>
+                        <p>
+                            <strong>Email:</strong> 
+                            <a href="mailto:dez160905@gmail.com" class="text-accent-color hover:underline">dez160905@gmail.com</a>
+                        </p>
+                        <p><strong>Số điện thoại:</strong> 0909703658</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bài tập Section -->
+        <!-- Bài tập Section -->
+<section class="my-12" id="bai1">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-accent-color/50 pb-2">Bài tập & Dự án</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Bài tập 01 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Bài tập 01: Thiết kế Landing Page</h3>
+            <p class="text-gray-600">Áp dụng HTML5 và CSS3 để xây dựng một trang giới thiệu sản phẩm responsive.</p>
+            <a href="bai01.html" class="inline-block mt-4 text-accent-color hover:text-blue-700 font-medium">Xem chi tiết &rarr;</a>
+        </div>
+
+        <!-- Bài tập 02 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300" id="bai2">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Bài tập 02: Ứng dụng JavaScript</h3>
+            <p class="text-gray-600">Phát triển một ứng dụng web đơn giản sử dụng JavaScript thuần.</p>
+            <a href="bai02.html" class="inline-block mt-4 text-accent-color hover:text-blue-700 font-medium">Xem chi tiết &rarr;</a>
+        </div>
+    </div>
+</section>
+
+
+        <!-- News/Iframe Section -->
+        <section class="news my-12" id="gallery">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-accent-color/50 pb-2">Khu vực Đọc báo / Tin tức</h2>
+            <div class="bg-white p-4 rounded-xl shadow-2xl">
+                 <p class="text-sm text-gray-500 mb-3">Nguồn: Wikipedia (Hiển thị qua Iframe)</p>
+                 <div class="news-frame w-full h-[500px] overflow-hidden rounded-lg">
+                    <iframe 
+                        src="https://vi.wikipedia.org/wiki/Bluetooth" 
+                        frameborder="0" 
+                        title="Frame Tin Tức"
+                        style="width: 100%; height: 600px; border: 1px solid #ccc;">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <div class="social-links mb-4 space-x-6 text-lg">
+                <a href="#" class="text-gray-400 hover:text-accent-color transition duration-300">Facebook</a>
+                <a href="#" class="text-gray-400 hover:text-accent-color transition duration-300">Instagram</a>
+                <a href="#" class="text-gray-400 hover:text-accent-color transition duration-300">Twitter</a>
+            </div>
+            <p class="text-gray-400 text-sm">&copy; 2025 Phạm Huỳnh Minh Trọng - Landing Page cá nhân.</p>
+        </div>
+    </footer>
+
+    <!-- JS riêng -->
+    <script src="js/main.js"></script>
+</body>
+</html>
